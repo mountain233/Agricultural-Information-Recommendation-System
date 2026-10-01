@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 植物标本 · 暖纸底 + 深林绿 */
+    --background: 51 38% 91%;
+    --foreground: 134 82% 13%;
+    --card: 50 44% 94%;
+    --card-foreground: 134 82% 13%;
+    --popover: 50 44% 95%;
+    --popover-foreground: 134 82% 13%;
+    --primary: 134 82% 16%;
+    --primary-foreground: 51 38% 93%;
+    --secondary: 53 26% 85%;
+    --secondary-foreground: 134 60% 18%;
+    --muted: 53 24% 86%;
+    --muted-foreground: 100 10% 38%;
+    --accent: 96 32% 38%;
+    --accent-foreground: 51 38% 94%;
+    --destructive: 12 62% 38%;
+    --destructive-foreground: 51 38% 94%;
+    --border: 70 16% 74%;
+    --input: 70 16% 70%;
+    --ring: 134 82% 20%;
+    --radius: 0.375rem;
+    --sidebar-background: 52 34% 88%;
+    --sidebar-foreground: 134 50% 20%;
+    --sidebar-primary: 134 82% 16%;
+    --sidebar-primary-foreground: 51 38% 93%;
+    --sidebar-accent: 53 28% 83%;
+    --sidebar-accent-foreground: 134 60% 18%;
+    --sidebar-border: 70 14% 72%;
+    --sidebar-ring: 134 82% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Inter", -apple-system, "PingFang SC", "Hiragino Sans GB",
+      "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  }
+  .font-mono,
+  code,
+  kbd {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+      Consolas, monospace !important;
+  }
+}
+
+@layer components {
+  /* 控制台式面板：细线 + 平角，无厚重卡片阴影 */
+  .panel {
+    @apply border border-border bg-card;
+  }
+  .panel-title {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground;
+  }
+  .status-dot {
+    @apply inline-block h-1.5 w-1.5 rounded-full align-middle;
+  }
+  .pulse-dot {
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(20, 90, 40, 0.35);
+    }
+    50% {
+      opacity: 0.55;
+      box-shadow: 0 0 0 4px rgba(20, 90, 40, 0);
+    }
+  }
+  /* 细滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
